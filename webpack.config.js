@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');//打包带着html文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');//每次打包自动清理dist文件
 const VueLoaderPlugin = require('vue-loader/lib/plugin')//vue插件
-
+const CopyPlugin = require('copy-webpack-plugin');//将其他文件拷贝到dist文件夹下
 //一上来暴露一个对象
 module.exports = {
   //entry: path.resolve(__dirname,'src/index.js'),//入口
@@ -75,9 +75,16 @@ module.exports = {
     new CleanWebpackPlugin(),
 
     //这里是vue插件
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
 
-
+    //将其他文件拷贝到dist文件夹下的插件
+    new CopyPlugin([
+      {
+          from:path.resolve(__dirname,"src/public"),
+          to:path.resolve(__dirname,'dist'),
+          ignore:['index.html']
+      }
+  ])
   ],
 
   
@@ -97,7 +104,10 @@ module.exports = {
 
 
   resolve:{
-    extensions: [".js", ".json",".vue"]//不用再写扩展后缀名了
+    extensions: [".js", ".json",".vue"],//不用再写扩展后缀名了
+    alias:{
+      '@':path.resolve(__dirname, 'src')//取别名让@代表根目录下的SRC
+    }
 
   }
   
