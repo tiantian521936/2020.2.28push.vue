@@ -1,61 +1,56 @@
 <template>
-    
- <div>
-    <header class="site-header jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1>请发表对Vue的评论</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="container">
-     
-     <add :addcomment ='addcomment'/>
-     <list :comments ='comments' :deletecomment = 'deletecomment' />
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <Header :addtodo = 'addtodo'></Header>
+      <Main :todos = 'todos'></Main>
+      <Footer></Footer>
     </div>
   </div>
-    
 </template>
 
 <script type="text/ecmascript-6">
-import add from '@/components/add.vue'//@就是项目的根目录
-import list from '@/components/list.vue'
-
-    export default {
-        components:{
-            add,
-            list
-        },
-        data() {
-            return {
-                comments:[
-                    {id:1,username:'鹿晗',content:'hao'},
-                    {id:2,username:'杨烁',content:'henhao'},
-                    {id:3,username:'刘德华',content:'feichanghao'},
-                ]
-            }
-        },
-        methods:{
-            addcomment(obj){//添加的一个对象
-                this.comments.unshift(obj)//这是往comments头部添加一条数据
-
-            },
-
-            deletecomment(index){//传一个下标删除
-                this.comments.splice(index,1)//从comments内部删除指定下标的那一个数据，下标开始第一个参数是删除index这个下标的开始，参数二是，删除一个
+import Header from "@/components/header";
+import Main from "@/components/main";
+import Footer from "@/components/footer";
+export default {
+  data() {
+    return {
+      todos: [
+            { id: 1, content: "跑步", isover: false },
+            { id: 2, content: "瑜伽", isover: true},
+            { id: 3, content: "看书", isover: false }
+      ]
+    };
+  },
+  components: {
+    Header,
+    Main,
+    Footer
+  },
 
 
-            }
-
-        }
-        
+methods:{
+    addtodo(obj){
+        this.todos.unshift(boj)
     }
+}
+
+
+
+
+};
 </script>
 
 
 
 <style scoped>
-    
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+}
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 </style>

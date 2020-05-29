@@ -1,6 +1,6 @@
-import Vue from 'vue'
-import app from './app'
+import Vue from 'Vue'
+import app from '@/app'
 new Vue({
     el:'#root',
-    render:h => h(app)
+    render:h=>h(app)
 })
