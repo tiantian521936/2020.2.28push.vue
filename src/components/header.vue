@@ -1,6 +1,6 @@
 <template>
   <div class="todo-header">
-    <input type="text" placeholder="请输入你的任务名称，按回车键确认"@keyup.enter = 'addt' />
+    <input type="text" placeholder="请输入你的任务名称，按回车键确认" v-model="content" @keyup.enter = "addt" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 export default {
     data () {
         return {
-            comment:''
+            content:''
         }
     },
     props:{
@@ -19,11 +19,23 @@ export default {
 
     methods:{
         addt(){
-
+            let content = this.content
+            let id = Date.now()
+            let isover = false
+            //trim是去除两边空格
+            if(content.trim()){
+                let obj ={
+                    id,
+                    content,
+                    isover
+                }
+                this.addtodo(obj)
+                //写法二
+                // this.$emit('addtodo',obj)
+            }
+                this.content = ''
         }
     }
-
-
 };
 </script>
 

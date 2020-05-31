@@ -5,7 +5,7 @@
       <input type="checkbox" v-model="ischeck"/>
       <span>{{todo.content}}</span>
     </label>
-    <button class="btn btn-danger" v-show="isshow">删除</button>
+    <button class="btn btn-danger" v-show="isshow" @click="deleteT">删除</button>
   </li>
 </template>
 
@@ -14,12 +14,19 @@
 <script type="text/ecmascript-6">
 export default {
     props:{
-        todo:Object
+        todo:Object,
+        index:Number,
+        updateone:Function,
+        deleteOne:Function
     },
     computed: {
         ischeck:{
             get(){
                 return this.todo.isover
+            },
+            //自己点击打钩的状态，其实就是修改ischeck的值
+            set(val){//修改后checkbox新的值
+               this.updateone(this.index,val)
             }
         }
         
@@ -35,6 +42,9 @@ export default {
         handleritem(flag){
             flag?this.myClass = "enterClass":this.myClass = "leaverClass"
             this.isshow = !this.isshow
+        },
+        deleteT(index){
+            this.deleteOne(this.index)
         }
     }
 };

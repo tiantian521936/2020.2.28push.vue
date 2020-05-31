@@ -1,7 +1,12 @@
 <template>
   <div>
     <ul class="todo-main">
-        <item v-for="(todo, index) in todos" :key="todo.id" :todo="todo"></item>
+        <item v-for="(todo, index) in todos" :key="todo.id" 
+        :todo="todo" 
+        :index= "index"
+        :updateone ="updateone"
+        :deleteOne="deleteOne"
+        ></item>
     </ul>
   </div>
 </template>
@@ -12,7 +17,11 @@
 import item from '@/components/item'
 
 export default {
-    props:{todos:Array},//写对象可以规定接受的类型，这里是数组，
+    props:{
+        todos:Array,
+        updateone:Function,
+        deleteOne:Function
+        },//写对象可以规定接受的类型，这里是数组，
     components:{
         item
     }
