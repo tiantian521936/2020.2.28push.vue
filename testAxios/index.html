@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='root'>
+        <button @click='handlerAjax'>点击获取</button>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script src="./vue.js"></script>
+    <script>
+        // let btn = document.getElementById('btn')
+        // btn.onclick = function(){
+        //     axios({
+        //        url:'https://api.github.com/search/repositories',
+        //        method:'get',
+        //        params:{
+        //            q:'v',
+        //            sort:'stars'
+        //        } 
+        //     }).then(response =>{
+        //         console.log(response.data)
+        //     }).catch(error =>{
+        //         cosole.log(error.message)
+        //     });
+
+        // }
+
+
+
+
+        new Vue({
+            el: '#root',
+            methods: {
+                handlerAjax() {
+                    axios({
+                        url: 'https://api.github.com/search/repositories',
+                        method: 'get',
+                        params: {
+                            q: 'v',
+                            sort: 'stars'
+                        }
+                    }).then(response => {
+                        console.log(response.data)
+                    }).catch(error => {
+                        cosole.log(error.message)
+                    });
+
+                }
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
