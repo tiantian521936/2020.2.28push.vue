@@ -43,7 +43,22 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,//如果图片小于这个值，会被base64编码解析一个字符串，调效率，减少请求
-              name:'[hash:8].[ext]'//默认值就是不写就用哈希算法把名字变为哈希值，:8是截取打包后哈希值的前8 位数后面这个代表扩展名一般不改，
+              name:'[hash:8].[ext]',//默认值就是不写就用哈希算法把名字变为哈希值，:8是截取打包后哈希值的前8 位数后面这个代表扩展名一般不改，
+
+              plugins: [//按需打包，省空间
+                [
+                  "component",
+                  {
+                    "libraryName": "element-ui",
+                    "styleLibraryName": "theme-chalk"
+                  }
+                ]
+              ]
+
+
+
+
+
             }
           }
         ]
@@ -53,7 +68,17 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-      }
+      },
+
+      //配置文字图标
+      
+        {
+          test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+          loader: 'file-loader'
+        }
+
+
+      
     
     ]
 
@@ -99,9 +124,9 @@ module.exports = {
     quiet:true,//输出少量的提示信息
     proxy:{//其实这就是一个代理
       '/api':{//告诉我们什么样的请求会转发
-        target:'http://localhost:4000',//
+        target:'http://localhost:4000',//把转发的请求的路径默拼接到这后面并带上api
 
-        pathRewrite:{'^/api':''},
+        pathRewrite:{'^/api':''},//这里是最后转换好的真正目标路径http://localhost:4000/user/info
 
         changeOrigin:true
         
