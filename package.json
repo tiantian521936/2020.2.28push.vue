@@ -9,6 +9,7 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-loader": "^8.0.0-beta.0",
+    "element-ui": "^2.13.2",
     "vue": "^2.6.11"
   },
   "devDependencies": {

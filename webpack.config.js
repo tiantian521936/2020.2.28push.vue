@@ -97,6 +97,18 @@ module.exports = {
     port: 8080,//服务启动的端口
     open:true,//是否自动打开浏览器
     quiet:true,//输出少量的提示信息
+    proxy:{//其实这就是一个代理
+      '/api':{//告诉我们什么样的请求会转发
+        target:'http://localhost:4000',//
+
+        pathRewrite:{'^/api':''},
+
+        changeOrigin:true
+        
+      },
+      
+    }
+
   },
 
 
