@@ -1,15 +1,13 @@
-import Vue from 'Vue'
+import Vue from 'vue'
 import app from '@/app'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import router from './router/index'
 
-Vue.use(ElementUI)
+
+
 
 new Vue({
-
-    beforeCreate(){
-        Vue.prototype.$bus = this//事件总线，没必要去实现Vue
-    },
     el:'#root',
-    render:h=>h(app)
+    render:h=>h(app),
+    router //当我们注册上路由器的时候组件对象当中都可以获取到
+          //this.$router和this.$route
 })

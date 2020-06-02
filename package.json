@@ -10,7 +10,8 @@
     "@babel/preset-env": "^7.9.6",
     "babel-loader": "^8.0.0-beta.0",
     "element-ui": "^2.13.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.2"
   },
   "devDependencies": {
     "babel-plugin-component": "^1.1.1",

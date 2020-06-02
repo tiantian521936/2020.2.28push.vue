@@ -1,41 +1,42 @@
 <template>
-  <el-row>
-    <el-button round>圆角按钮</el-button>
-    <el-button type="primary" round>主要按钮</el-button>
-    <el-button type="success" round>成功按钮</el-button>
-    <el-button type="info" round>信息按钮</el-button>
-    <el-button type="warning" round>警告按钮</el-button>
-    <el-button type="danger" round @click="open">危险按钮</el-button>
-  </el-row>
+  <div>
+    <div class="container">
+      <div class="page-header">
+        <h1>路由组件的练习</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <!-- Nav tabs -->
+        <ul class="nav nav-stacked col-md-6" role="tablist">
+          <li role="presentation" class="active">
+            <!-- <a href="#home" aria-controls="home" role="tab"
+            data-toggle="tab">Home</a>-->
+            <!-- <router-link  to = "/home" aria-controls="home" role="tab"
+            data-toggle="tab"> Home </router-link>-->
+            <router-link to="/home" aria-controls="Home" role="tab" data-toggle="tab">Home</router-link>
+          </li>
+          <li role="presentation">
+            <!-- <a href="#About" aria-controls="About" role="tab" data-toggle="tab">About</a> -->
+            <router-link to="/about" aria-controls="About" role="tab" data-toggle="tab">About</router-link>
+            <!-- <router-link  to = "/about" aria-controls="about" role="tab"
+            data-toggle="tab"> About </router-link>-->
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content col-md-6">
+          <!-- 显示和路径对应当前的组件的地方 -->
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 
 
 <script type="text/ecmascript-6">
-export default {
-  methods: {
-    open() {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      })
-        .then(() => {
-          //需要把todos当中的哪个删掉
-          this.$message({
-            type: "success",
-            message: "删除成功!"
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除"
-          });
-        });
-    }
-  }
-};
+export default {};
 </script>
 
 
